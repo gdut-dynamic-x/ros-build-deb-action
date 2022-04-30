@@ -21,9 +21,10 @@ do
   echo "Trying to package $package_source..."
   cd $package_source
   bloom-generate rosdebian --os-name ubuntu --ros-distro $ros_distro
-  if [ $hastimestamp ]
+  package_version=`dpkg-parsechangelog | grep 'Version:' | sed 's/Version: //g'`
+  if [ test $hastimestamp ]
   then
-    debchange -a $time_stamp -p -D -u -m 'Append timestamp when binarydeb was built.'
+    debchange -v $package_version.$time_stamp -p -D -u -m 'Append timestamp when binarydeb was built.'
   fi
   sed -e "s|-DCMAKE_PREFIX_PATH=.*|-DCMAKE_PREFIX_PATH=\""$CM_PREFIX_PATH"\"|g" -i debian/rules
   fakeroot debian/rules binary
