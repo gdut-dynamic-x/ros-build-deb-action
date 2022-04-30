@@ -16,8 +16,18 @@ jobs:
         with:
           repository: ros/common_msgs
           path: ./common_msgs
+      - uses: ros-tooling/setup-ros@v0.2
+        with:
+          required-ros-distributions: noetic
       - name: Test Action
         uses: ./
         with:
-          ros_distro: noetic
+          ros-distro: 'noetic'
+      - name: Get Test artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: test-artifact
+          path: |
+            *.deb
+            *.ddeb
 

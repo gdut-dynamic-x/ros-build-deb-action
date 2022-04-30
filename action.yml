@@ -2,7 +2,7 @@ name: 'ros 1 build deb action'
 author: YuuinIH
 description: 'Build debian packages from ROS 1 packages using Github Action.'
 input:
-  ros_distro:
+  ros-distro:
     description: 'The version of ros used.'
     required: false
     default: 'noetic'
@@ -10,9 +10,6 @@ input:
     description: 'Add the build timestamp behind the version number.(Just like ros buildfarm.)'
     required: false
     default: false
-  workpath:
-    required: false
-    default: './'
 runs:
   using: "composite"
   steps:
