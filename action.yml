@@ -1,6 +1,9 @@
 name: 'ros 1 build deb action'
 author: YuuinIH
 description: 'Build debian packages from ROS 1 packages using Github Action.'
+branding:
+  icon: package
+  color: gray-dark
 inputs:
   ros_distro:
     description: 'The version of ros used.'
