@@ -30,4 +30,4 @@ do
   cd $run_directory
 done
 echo 'Package has been done.'
-find $tmp_space -name '*.deb' -o -name '*.ddeb'|xargs -I {} cp {} $run_directory/
+find $tmp_space/.. -name '*.deb' -o -name '*.ddeb'|xargs -I {} cp {} $run_directory/
