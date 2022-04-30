@@ -10,13 +10,19 @@ input:
     description: 'Add the build timestamp behind the version number.(Just like ros buildfarm.)'
     required: false
     default: false
+  workpath:
+    required: false
+    default: './'
 runs:
   using: "composite"
   steps:
     - name: Install dependence
-      run: ./scripts/build ${{ inputs.ros_distro }}
+      run: ${{ github.action_path }}/scripts/dep.sh ${{ inputs.ros_distro }}
+      shell: bash
     - name: Build and install from source
       id: build-and-install
-      run: ./scripts/build.sh ${{ inputs.ros_distro }}
+      run: ${{ github.action_path }}/scripts/build.sh ${{ inputs.ros_distro }}
+      shell: bash
     - name: Package deb
-      run: ./scripts/package.sh ${{ inputs.ros_distro }} ${{ steps.build-and-install.outputs.catkin-ws-directory }}
+      run: ${{ github.action_path }}/scripts/package.sh ${{ inputs.ros_distro }} ${{ steps.build-and-install.outputs.catkin-ws-directory }} ${{ inputs.timestamp }}
+      shell: bash
