@@ -1,0 +1,22 @@
+name: 'ros 1 build deb action'
+author: YuuinIH
+description: 'Build debian packages from ROS 1 packages using Github Action.'
+input:
+  ros_distro:
+    description: 'The version of ros used.'
+    required: false
+    default: 'noetic'
+  timestamp:
+    description: 'Add the build timestamp behind the version number.(Just like ros buildfarm.)'
+    required: false
+    default: false
+runs:
+  using: "composite"
+  steps:
+    - name: Install dependence
+      run: ./scripts/build ${{ inputs.ros_distro }}
+    - name: Build and install from source
+      id: build-and-install
+      run: ./scripts/build.sh ${{ inputs.ros_distro }}
+    - name: Package deb
+      run: ./scripts/package.sh ${{ inputs.ros_distro }} ${{ steps.build-and-install.outputs.catkin-ws-directory }}
