@@ -22,7 +22,7 @@ jobs:
       - name: Test Action
         uses: ./
         with:
-          ros-distro: 'noetic'
+          ros-distro: noetic
       - name: Get Test artifact
         uses: actions/upload-artifact@v3
         with:
