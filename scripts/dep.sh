@@ -6,5 +6,6 @@ sudo apt update && sudo apt-get install -y \
     python3-bloom \
     fakeroot \
     dh-make \
-    devscripts
+    devscripts \
+    ninja-build
 pip install shyaml

@@ -13,6 +13,10 @@ inputs:
     description: 'Add the build timestamp behind the version number.(Just like ros buildfarm.)'
     required: false
     default: false
+  ignore_packages:
+    description: 'Ignore packages.'
+    required: false
+    default: ''
 runs:
   using: "composite"
   steps:
@@ -21,7 +25,7 @@ runs:
       shell: bash
     - name: Build and install from source
       id: build-and-install
-      run: ${{ github.action_path }}/scripts/build.sh ${{ inputs.ros_distro }}
+      run: ${{ github.action_path }}/scripts/build.sh ${{ inputs.ros_distro }} ${{ inputs.ignore_packages }}
       shell: bash
     - name: Package deb
       run: ${{ github.action_path }}/scripts/package.sh ${{ inputs.ros_distro }} ${{ steps.build-and-install.outputs.catkin-ws-directory }} ${{ inputs.timestamp }}
