@@ -10,7 +10,7 @@ See [action.yml](action.yml).
 ```yaml
 steps:
     - uses: actions/checkout@v3
-    - uses: ros-tooling/setup-ros@v0.2
+    - uses: ros-tooling/setup-ros@v0.4
       with:
         required-ros-distributions: noetic
     - uses: gdut-dynamic-x/ros-build-deb-action@v1
