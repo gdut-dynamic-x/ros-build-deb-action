@@ -20,9 +20,6 @@ jobs:
         with:
           repository: ros/common_msgs
           path: ./common_msgs
-      - uses: ros-tooling/setup-ros@v0.2
-        with:
-          required-ros-distributions: noetic
       - name: Test Action
         uses: ./
         with:
@@ -46,9 +43,6 @@ jobs:
         with:
           repository: ros/common_msgs
           path: ./common_msgs
-      - uses: ros-tooling/setup-ros@v0.4
-        with:
-          required-ros-distributions: noetic
       - name: Test Action
         uses: ./
         with:
