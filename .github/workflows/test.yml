@@ -10,8 +10,6 @@ on:
 jobs:
   action-test:
     runs-on: ubuntu-20.04
-    container: 
-      image: ros:noetic
     steps:
       - name: Checkout action
         uses: actions/checkout@v3
@@ -33,8 +31,6 @@ jobs:
             *.ddeb
   action-test-with-timestamp:
     runs-on: ubuntu-20.04
-    container: 
-      image: ros:noetic
     steps:
       - name: Checkout action
         uses: actions/checkout@v3
